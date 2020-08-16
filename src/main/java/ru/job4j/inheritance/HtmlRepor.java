@@ -1,7 +1,7 @@
 package ru.job4j.inheritance;
 
 public class HtmlRepor extends TextReport {
- //аннотация
+ //аннотация!
     @Override
     public String generate(String name, String body) {
         return "<h1>" + name + "</h1>" +
