@@ -1,5 +1,5 @@
 package ru.job4j.oop;
-
+//final
 public final class LiquidationProduct {
 
     private Product product;
