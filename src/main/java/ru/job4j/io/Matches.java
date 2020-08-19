@@ -15,6 +15,10 @@ public class Matches {
             System.out.print("Игрок " + igrok  + " возьмите от 1 до 3 спичек: ");
             select = Integer.valueOf(input.nextLine());
             if (select == 1 || select == 2 || select == 3) {
+                if (matches - select < 0) {
+                    System.out.println("нельзя столько взять спичек, спичек будет меньше нуля");
+                    continue;
+                }
                 matches -= select;
                 if (matches == 0) {
                     System.out.println(igrok +" игрок выйграл, спичек осталось: " + matches);
@@ -26,7 +30,6 @@ public class Matches {
                 igrok = (igrok == 1) ? 2 : 1;
             } else {
                 System.out.println("Нельзя брать столько спичек");
-                continue;
             }
 
         }
