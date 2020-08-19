@@ -31,7 +31,6 @@ public class Matches {
             } else {
                 System.out.println("Нельзя брать столько спичек");
             }
-
         }
     }
 }
