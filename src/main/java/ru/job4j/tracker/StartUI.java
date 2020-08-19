@@ -26,7 +26,7 @@ public class StartUI {
     public static void deleteItem(Input input, Tracker tracker) {
         int id = input.askInt("Enter the id of the removable application:");
         if (tracker.delete(id)) {
-            System.out.println("имя заявки изменено");
+            System.out.println("имя заявки удалено");
         } else {
             System.out.println("введен неккоректный id");
         }
