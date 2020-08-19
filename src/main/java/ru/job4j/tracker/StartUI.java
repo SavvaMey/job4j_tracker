@@ -45,7 +45,7 @@ public class StartUI {
                 System.out.print("Enter the id of the application:");
                 int id = Integer.valueOf(scanner.nextLine());
                 Item item = tracker.findById(id);
-                if (item.getName().equals(null) ) {
+                if (item == null ) {
                     System.out.println("Заявка с таким id не найдена");
                 } else {
                     System.out.println("id: " + item.getId() + "name: " + item.getName());
