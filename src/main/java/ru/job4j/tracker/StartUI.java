@@ -32,6 +32,28 @@ public class StartUI {
         }
     }
 
+    public static void findByIdItem(Input input, Tracker tracker) {
+        int id = input.askInt("Enter the id of the application:");
+        Item item = tracker.findById(id);
+        if (item == null ) {
+            System.out.println("Заявка с таким id не найдена");
+        } else {
+            System.out.println("id: " + item.getId() + " name: " + item.getName());
+        }
+    }
+
+    public static void findByName(Input input, Tracker tracker) {
+        String name = input.askStr("Enter the new name of application:");
+        Item[] items = tracker.findByName(name);
+        if (items.length > 0) {
+            for (Item item : items) {
+                System.out.println("id: " + item.getId() + " name: " + item.getName());
+            }
+        } else {
+            System.out.println("Заявки с таким именем не найдены");
+        }
+    }
+
     public void init(Input input, Tracker tracker) {
         boolean run = true;
         while (run) {
@@ -50,23 +72,9 @@ public class StartUI {
             } else if (select == 3) {
                 StartUI.deleteItem(input, tracker);
             } else if (select == 4) {
-                int id = input.askInt("Enter the id of the application:");
-                Item item = tracker.findById(id);
-                if (item == null ) {
-                    System.out.println("Заявка с таким id не найдена");
-                } else {
-                    System.out.println("id: " + item.getId() + "name: " + item.getName());
-                }
+                StartUI.findByIdItem(input, tracker);
             } else if (select == 5) {
-                String name = input.askStr("Enter the new name of application:");
-                Item[] items = tracker.findByName(name);
-                if (items.length > 0) {
-                    for (Item item : items) {
-                        System.out.println("id: " + item.getId() + "name: " + item.getName());
-                    }
-                } else {
-                    System.out.println("Заявки с таким именем не найдены");
-                }
+             StartUI.findByName(input, tracker);
             } else if (select == 6) {
                 run = false;
                 System.out.println("good bye");
