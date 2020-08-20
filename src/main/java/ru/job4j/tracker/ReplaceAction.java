@@ -8,7 +8,7 @@ public class ReplaceAction implements UserAction{
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        int id =input.askInt("Enter the id of the changed application:");
+        int id = input.askInt("Enter the id of the changed application:");
         String name = input.askStr("Enter the new name of the changed application:");
         Item item = new Item(name);
         if (tracker.replace(id,item)) {
