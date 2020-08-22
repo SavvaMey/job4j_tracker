@@ -180,6 +180,12 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"one","1"}
         );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new CreateAction(out),
+                new FindByIdAction(out),
+                new ExitAction(out)
+        };
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
         assertThat(selected, is(1));
