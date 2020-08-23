@@ -9,7 +9,7 @@ public class TrackerSinglThirdTest {
     @Test
     public void getInstance() {
         TrackerSinglThird s = TrackerSinglThird.getInstance();
-        TrackerSinglThird s_new = TrackerSinglThird.getInstance();
-        assertSame( s , s_new);
+        TrackerSinglThird sNew = TrackerSinglThird.getInstance();
+        assertSame( s , sNew);
     }
 }

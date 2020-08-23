@@ -11,7 +11,7 @@ public class TrackerSinglSecondTest {
     @Test
     public void getInstance() {
        TrackerSinglSecond s = TrackerSinglSecond.getInstance();
-        TrackerSinglSecond s_new = TrackerSinglSecond.getInstance();
-        assertSame( s , s_new);
+        TrackerSinglSecond sNew = TrackerSinglSecond.getInstance();
+        assertSame( s , sNew);
     }
 }

@@ -4,5 +4,9 @@ import ru.job4j.tracker.Tracker;
 
 public enum TrackerSinglFourth {
     INSTANCE;
-    Tracker tracker = new Tracker();
+     private Tracker tracker = new Tracker();
+
+     public Tracker GetTracker() {
+         return tracker;
+     }
 }
