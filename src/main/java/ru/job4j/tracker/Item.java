@@ -10,6 +10,10 @@ public class Item {
     public Item (String name){
         this.name = name;
     }
+    public Item (String name, int id) {
+        this.id = id;
+        this.name = name;
+    }
 
     public int getId() {
         return id;
