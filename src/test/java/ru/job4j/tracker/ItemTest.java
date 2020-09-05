@@ -34,4 +34,26 @@ public class ItemTest {
         Collections.sort(items, new BackwardsSortById());
         assertThat(items.get(0).getId(),is(24));
     }
+
+    @Test
+    public void SortTestIncreaseName() {
+        List<Item> items = new ArrayList<>();
+        items.add(new Item ("Kol", 19));
+        items.add(new Item ("Aml", 6));
+        items.add(new Item ("Uil", 24));
+        Collections.sort(items, new SortByname());
+        System.out.println(items);
+        assertThat(items.get(0).getId(),is(6));
+    }
+
+    @Test
+    public void SortTestDecreaseName() {
+        List<Item> items = new ArrayList<>();
+        items.add(new Item ("Kol", 19));
+        items.add(new Item ("Aml", 6));
+        items.add(new Item ("Uil", 24));
+        Collections.sort(items, new BackwardsSortById());
+        System.out.println(items);
+        assertThat(items.get(0).getId(),is(24));
+    }
 }
