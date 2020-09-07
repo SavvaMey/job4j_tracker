@@ -1,6 +1,5 @@
-package ru.job4j.tracker.Singlton;
+package ru.job4j.tracker.singlton;
 
-import ru.job4j.tracker.Item;
 import ru.job4j.tracker.Tracker;
 
 public class TrackerSingle {

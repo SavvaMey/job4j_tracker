@@ -14,6 +14,6 @@ public class TrackerSingleTest {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = TrackerSingle.getInstance();
         }
-        assertThat( TrackerSingle.counter , is(1));
+        assertThat(TrackerSingle.counter, is(1));
     }
 }

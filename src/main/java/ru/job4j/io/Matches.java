@@ -21,7 +21,7 @@ public class Matches {
                 }
                 matches -= select;
                 if (matches == 0) {
-                    System.out.println(igrok +" игрок выйграл, спичек осталось: " + matches);
+                    System.out.println(igrok + " игрок выйграл, спичек осталось: " + matches);
                     run = false;
                     break;
                 } else {

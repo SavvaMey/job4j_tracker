@@ -1,4 +1,4 @@
-package ru.job4j.tracker.Singlton;
+package ru.job4j.tracker.singlton;
 
 import org.junit.Test;
 
@@ -9,7 +9,7 @@ public class TrackerSinglFourthTest {
     @Test
     public void values() {
         TrackerSinglFourth tracker = TrackerSinglFourth.INSTANCE;
-        TrackerSinglFourth tracker_new = TrackerSinglFourth.INSTANCE;
-        assertSame(tracker, tracker_new);
+        TrackerSinglFourth trackerNew = TrackerSinglFourth.INSTANCE;
+        assertSame(tracker, trackerNew);
     }
 }
