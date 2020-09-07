@@ -7,7 +7,7 @@ public class TrackerSinglThird {
     private TrackerSinglThird() {
     }
 
-    Tracker tracker = new Tracker();
+    private Tracker tracker = new Tracker();
 
     public static TrackerSinglThird getInstance() {
         return Holder.INSTANCE;

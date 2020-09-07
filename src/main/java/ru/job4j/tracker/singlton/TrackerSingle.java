@@ -7,7 +7,7 @@ public class TrackerSingle {
 
     //public static int counter = 0;
 
-    Tracker tracker = new Tracker();
+    private Tracker tracker = new Tracker();
 
     private TrackerSingle() {
         //counter++;

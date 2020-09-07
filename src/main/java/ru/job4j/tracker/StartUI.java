@@ -46,6 +46,6 @@ public class StartUI {
         actions.add(new FindByIdAction(output));
         actions.add(new FindByNameAction(output));
         actions.add(new ExitAction(output));
-        new StartUI(output).init(input, trackerSingle.tracker, actions);
+        new StartUI(output).init(input, trackerSingle.getTracker(), actions);
     }
 }

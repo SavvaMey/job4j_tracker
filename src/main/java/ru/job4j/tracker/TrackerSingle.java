@@ -3,9 +3,10 @@ package ru.job4j.tracker;
 public class TrackerSingle {
     private static TrackerSingle instance;
     public static int counter = 0;
-
-    Tracker tracker = new Tracker();
-
+    private Tracker tracker = new Tracker();
+    public Tracker getTracker() {
+        return tracker;
+    }
     private TrackerSingle() {
         counter++;
     }

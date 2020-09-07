@@ -5,7 +5,7 @@ import ru.job4j.tracker.Tracker;
 public class TrackerSinglSecond {
     private static final TrackerSinglSecond INSTANCE = new TrackerSinglSecond();
 
-    Tracker tracker = new Tracker();
+    private Tracker tracker = new Tracker();
 
     private TrackerSinglSecond() {
     }
