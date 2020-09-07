@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 public class ItemTest {
     @Test
-    public void SortTest() {
+    public void sortTest() {
         List<Item> items = new ArrayList<>();
         items.add(new Item("Vol", 19));
         items.add(new Item("Val", 6));
@@ -26,7 +26,7 @@ public class ItemTest {
     }
 
     @Test
-    public void SortTestDecrease() {
+    public void sortTestDecrease() {
         List<Item> items = new ArrayList<>();
         items.add(new Item("Vol", 19));
         items.add(new Item("Val", 6));
@@ -36,7 +36,7 @@ public class ItemTest {
     }
 
     @Test
-    public void SortTestIncreaseName() {
+    public void sortTestIncreaseName() {
         List<Item> items = new ArrayList<>();
         items.add(new Item("Kol", 19));
         items.add(new Item("Aml", 6));
@@ -47,7 +47,7 @@ public class ItemTest {
     }
 
     @Test
-    public void SortTestDecreaseName() {
+    public void sortTestDecreaseName() {
         List<Item> items = new ArrayList<>();
         items.add(new Item("Kol", 19));
         items.add(new Item("Aml", 6));

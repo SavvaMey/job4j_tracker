@@ -46,7 +46,7 @@ public class StartUITest {
     public void whenReplaceItem() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0", "Item name" , "1", "1", "New name", "2" }
+                new String[] {"0", "Item name", "1", "1", "New name", "2" }
         );
         Tracker tracker = new Tracker();
         List<UserAction> actions = new ArrayList<>();
@@ -77,7 +77,7 @@ public class StartUITest {
     public void whenFindAllAction() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[]{"0","guyazo","1", "2"}
+                new String[]{"0", "guyazo", "1", "2"}
         );
         Tracker tracker = new Tracker();
         List<UserAction> actions = new ArrayList<>();
@@ -108,7 +108,7 @@ public class StartUITest {
     public void whenFindByNameAction() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[]{"0","name","1", "name","2" }
+                new String[]{"0", "name", "1", "name", "2" }
         );
         Tracker tracker = new Tracker();
         List<UserAction> actions = new ArrayList<>();
@@ -140,7 +140,7 @@ public class StartUITest {
     public void whenFindById() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[]{"0" ,"name", "1", "1" , "2" }
+                new String[]{"0", "name", "1", "1", "2"}
         );
         Tracker tracker = new Tracker();
         List<UserAction> actions = new ArrayList<>();
@@ -187,7 +187,7 @@ public class StartUITest {
     public void whenInvalidInput() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"one","1"});
+                new String[] {"one", "1"});
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
         assertThat(out.toString(), is("Please enter validate data again.\r\n"));

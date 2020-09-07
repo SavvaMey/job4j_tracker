@@ -3,11 +3,14 @@ package ru.job4j.tracker.singlton;
 import ru.job4j.tracker.Tracker;
 
 public class TrackerSinglThird {
+    private Tracker tracker = new Tracker();
 
     private TrackerSinglThird() {
     }
 
-    private Tracker tracker = new Tracker();
+    public Tracker getTracker() {
+        return tracker;
+    }
 
     public static TrackerSinglThird getInstance() {
         return Holder.INSTANCE;
