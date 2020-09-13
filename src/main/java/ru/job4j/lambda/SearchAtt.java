@@ -9,14 +9,6 @@ import java.util.function.Supplier;
 
 public class SearchAtt {
 
-    private static int loop(int to, BiFunction<Integer, Integer, Integer> func, Supplier<Integer> initValue) {
-        int rsl = initValue.get();
-        for (int index = 1; index <= to; index++) {
-            rsl = func.apply(rsl, index);
-        }
-        return rsl;
-    }
-
     public static List<Attachment> filter(List<Attachment> list, Predicate<Attachment> predicate) {
         List<Attachment> rsl = new ArrayList<>();
         for (Attachment attachment : list) {
