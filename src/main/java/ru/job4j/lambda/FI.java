@@ -10,7 +10,10 @@ public class FI {
                 new Attachment("AVV", 120),
                 new Attachment("AV", 23)
         };
-        Comparator<Attachment> cmpDescSize = (left, right) -> right.getName().length() - left.getName().length();
+        Comparator<Attachment> cmpDescSize = (left, right) -> {
+            System.out.println("compare - " + right.getName() + " : " + left.getName());
+            return right.getName().length() - left.getName().length();
+        };
         Arrays.sort(atts, cmpDescSize);
         System.out.println(Arrays.toString(atts));
     }
