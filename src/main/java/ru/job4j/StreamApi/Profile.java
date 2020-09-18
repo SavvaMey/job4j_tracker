@@ -15,9 +15,6 @@ public class Profile {
         return address;
     }
 
-    List<Address> collect(List<Profile> profiles){
-        return profiles.stream().map(Profile::getAddress).collect(Collectors.toList());
-    }
 
     @Override
     public boolean equals(Object o) {
