@@ -33,13 +33,23 @@ public class Analyze {
         return  stream.map(pupil -> new Tuple(pupil.getName(),
                 pupil.getSubjects()
                         .stream()
-                        .mapToDouble(Subject::getScore)
+                        .mapToInt(Subject::getScore)
                         .sum()))
                         .max(Comparator.comparing(Tuple::getScore))
                         .orElse(null);
     }
 
     public static Tuple bestSubject(Stream<Pupil> stream) {
-        return null;
+        return stream
+                .flatMap(x -> x.getSubjects().stream())
+                .collect(Collectors.toMap(
+                        Subject::getName,
+                        Subject::getScore,
+                        Integer::sum)
+                ).entrySet()
+                .stream()
+                .map(x -> new Tuple(x.getKey(), x.getValue()))
+                .max(Comparator.comparing(Tuple::getScore))
+                .orElse(null);
     }
 }
