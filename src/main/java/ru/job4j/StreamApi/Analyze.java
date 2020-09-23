@@ -1,6 +1,8 @@
 package ru.job4j.StreamApi;
 
 import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -25,17 +27,18 @@ public class Analyze {
                                 .collect(Collectors.toList());
     }
 
-    public static List<Tuple> averageScoreByPupil(Stream<Pupil> stream) {
+    public static LinkedList<Tuple> averageScoreByPupil(Stream<Pupil> stream) {
         return stream
                 .flatMap(x -> x.getSubjects().stream())
                 .collect(Collectors.toMap(
                         Subject::getName,
                         Subject::getScore,
-                        (x1,x2) -> (x1+x2)/2 )
-                ).entrySet()
+                        (x1,x2) -> (x1+x2) / 2, LinkedHashMap::new))
+//        .collect(Collectors.groupingBy(Subject::getName, Collectors.summarizingInt(Subject::getScore)))
+                .entrySet()
                 .stream()
                 .map(x -> new Tuple(x.getKey(), x.getValue()))
-                .collect(Collectors.toList());
+                .collect(Collectors.toCollection(LinkedList::new));
     }
 
     public static Tuple bestStudent(Stream<Pupil> stream) {
