@@ -30,11 +30,6 @@ public class Analyze {
     public static LinkedList<Tuple> averageScoreByPupil(Stream<Pupil> stream) {
         return stream
                 .flatMap(x -> x.getSubjects().stream())
-//                .collect(Collectors.toMap(
-//                        Subject::getName,
-//                        Subject::getScore,
-//                        (x1,x2) -> (x1+x2) / 2,
-//                        LinkedHashMap::new))
         .collect(Collectors.groupingBy(Subject::getName, LinkedHashMap::new, Collectors.averagingDouble(Subject::getScore)))
                 .entrySet()
                 .stream()
