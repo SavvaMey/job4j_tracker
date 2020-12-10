@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 public class TrackerSingle {
     private static int counter = 0;
     private static TrackerSingle instance;
-    private Tracker tracker = new Tracker();
+    private MemTracker tracker = new MemTracker();
 
     private TrackerSingle() {
         counter++;
@@ -13,7 +13,7 @@ public class TrackerSingle {
         return counter;
     }
 
-    public Tracker getTracker() {
+    public MemTracker getTracker() {
         return tracker;
     }
 

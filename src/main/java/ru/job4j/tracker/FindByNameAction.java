@@ -16,7 +16,7 @@ public class FindByNameAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store tracker) {
         out.println("=== Find by name ====");
         String name = input.askStr("Enter the new name of application:");
         List<Item> items = tracker.findByName(name);

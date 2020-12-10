@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Tracker {
+public class MemTracker {
     private final List<Item> items = new ArrayList<>(100);
     private int ids = 1; // теперь используется только для генерации id
 
@@ -24,7 +24,7 @@ public class Tracker {
     }
 
     public List<Item> findByName(String key) {
-        List<Item> rsl = new ArrayList<Item>();
+        List<Item> rsl = new ArrayList<>();
         for (Item item : items) {
             if (item.getName().equals(key)) {
                 rsl.add(item);

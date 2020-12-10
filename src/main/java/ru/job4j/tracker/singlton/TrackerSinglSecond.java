@@ -1,11 +1,11 @@
 package ru.job4j.tracker.singlton;
 
-import ru.job4j.tracker.Tracker;
+import ru.job4j.tracker.MemTracker;
 
 public class TrackerSinglSecond {
     private static final TrackerSinglSecond INSTANCE = new TrackerSinglSecond();
 
-    private Tracker tracker = new Tracker();
+    private MemTracker tracker = new MemTracker();
 
     private TrackerSinglSecond() {
     }
