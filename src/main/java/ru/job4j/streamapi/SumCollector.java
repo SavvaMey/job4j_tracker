@@ -1,4 +1,4 @@
-package ru.job4j.StreamApi;
+package ru.job4j.streamapi;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -9,7 +9,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 
-public class SumCollector implements Collector<Integer, ArrayList<Integer>,Integer> {
+public class SumCollector implements Collector<Integer, ArrayList<Integer>, Integer> {
     @Override
     public Supplier<ArrayList<Integer>> supplier() {
         return ArrayList::new;

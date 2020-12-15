@@ -1,4 +1,4 @@
-package ru.job4j.StreamApi;
+package ru.job4j.streamapi;
 
 import org.junit.Test;
 
@@ -28,7 +28,7 @@ public class ListToMapTest {
     }
 
     @Test
-    public void MatrixToList() {
+    public void matrixToList() {
         Integer[][] arr = {{1, 2, 3}, {1, 2}};
         List<Integer> list = ListToMap.listInt(arr);
         List<Integer> listExpected = List.of(1, 2, 3, 1, 2);

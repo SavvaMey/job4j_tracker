@@ -1,4 +1,4 @@
-package ru.job4j.StreamApi;
+package ru.job4j.streamapi;
 
 public class Subject {
     private String name;

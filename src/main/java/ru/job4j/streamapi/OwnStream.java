@@ -1,9 +1,4 @@
-package ru.job4j.StreamApi;
-
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
+package ru.job4j.streamapi;
 
 public class OwnStream {
 

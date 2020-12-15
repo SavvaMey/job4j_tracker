@@ -1,6 +1,5 @@
-package ru.job4j.StreamApi;
+package ru.job4j.streamapi;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -10,7 +9,7 @@ public class StudentLevel {
         return students.stream()
                 .filter(Objects::nonNull)
                 .sorted((left, right) -> Integer.compare(right.getScore(), left.getScore()))
-                .takeWhile(student -> student.getScore() > bound )
+                .takeWhile(student -> student.getScore() > bound)
                 .collect(Collectors.toList());
     }
 }

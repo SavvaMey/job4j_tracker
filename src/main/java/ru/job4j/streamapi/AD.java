@@ -1,4 +1,4 @@
-package ru.job4j.StreamApi;
+package ru.job4j.streamapi;
 
 import java.util.List;
 
@@ -16,8 +16,8 @@ public class AD {
         }
 
         public static class User {
-            int id;
-            String name;
+            private int id;
+            private String name;
 
             public User(int id, String name) {
                 this.id = id;
@@ -34,8 +34,12 @@ public class AD {
 
             @Override
             public boolean equals(Object o) {
-                if (this == o) return true;
-                if (!(o instanceof User)) return false;
+                if (this == o) {
+                    return true;
+                }
+                if (!(o instanceof User)) {
+                    return false;
+                }
 
                 User user = (User) o;
 
@@ -49,9 +53,9 @@ public class AD {
         }
 
         public static class Info {
-            int added;
-            int changed;
-            int deleted;
+            private int added;
+            private int changed;
+            private int deleted;
         }
     }
 }

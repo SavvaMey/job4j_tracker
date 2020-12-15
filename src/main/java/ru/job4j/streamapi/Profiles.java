@@ -1,15 +1,15 @@
-package ru.job4j.StreamApi;
+package ru.job4j.streamapi;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Profiles {
-    List<Address> collect(List<Profile> profiles){
+    List<Address> collect(List<Profile> profiles) {
         return profiles.stream().map(Profile::getAddress).collect(Collectors.toList());
     }
 
-    List<Address> Uniquesort(List<Profile> profiles) {
+    List<Address> uniqueSort(List<Profile> profiles) {
         return profiles.stream().map(Profile::getAddress)
                 .sorted(Comparator.comparing(Address::getCity))
                 .distinct().collect(Collectors.toList());

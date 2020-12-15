@@ -1,4 +1,4 @@
-package ru.job4j.StreamApi;
+package ru.job4j.streamapi;
 
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -30,7 +30,8 @@ public class Analyze {
     public static LinkedList<Tuple> averageScoreByPupil(Stream<Pupil> stream) {
         return stream
                 .flatMap(x -> x.getSubjects().stream())
-        .collect(Collectors.groupingBy(Subject::getName, LinkedHashMap::new, Collectors.averagingDouble(Subject::getScore)))
+        .collect(Collectors.groupingBy(Subject::getName,
+                LinkedHashMap::new, Collectors.averagingDouble(Subject::getScore)))
                 .entrySet()
                 .stream()
                 .map(x -> new Tuple(x.getKey(), x.getValue()))

@@ -1,9 +1,8 @@
-package ru.job4j.StreamApi;
+package ru.job4j.streamapi;
 
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
@@ -12,7 +11,7 @@ import static org.junit.Assert.*;
 public class ProfileTest {
 
     @Test
-    public void newProfilesShouldGiveAdresses(){
+    public void newProfilesShouldGiveAdresses() {
         Address firstAd = new Address("Moscow", "Pushkin", 122, 343);
         Address secondAd = new Address("Kazan", "Ra", 1, 3);
         Address thAd = new Address("Moscow", "Bulova", 12, 34);
@@ -31,7 +30,7 @@ public class ProfileTest {
         expectedList.add(firstAd);
         expectedList.add(lastAd);
         Profiles listNew = new Profiles();
-        assertThat(expectedList,is(listNew.Uniquesort(list)));
+        assertThat(expectedList, is(listNew.uniqueSort(list)));
 
     }
 

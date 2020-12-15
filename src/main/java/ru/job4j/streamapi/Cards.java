@@ -1,16 +1,18 @@
-package ru.job4j.StreamApi;
+package ru.job4j.streamapi;
 
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Cards {
+
     public enum Suit {
         Diamonds, Hearts, Spades, Clubs
     }
+
     public enum Value {
         V_6, V_7, V_8
     }
+
     public class Card {
         private Suit suit;
         private Value value;
@@ -19,9 +21,9 @@ public class Cards {
             this.suit = suit;
             this.value = value;
         }
-
     }
-    public void makeCards () {
+
+    public void makeCards() {
                 Stream.of(Suit.values())
                 .flatMap(suit -> Stream.of(Value.values()).map(value -> new Card(suit, value)))
                 .collect(Collectors.toList())

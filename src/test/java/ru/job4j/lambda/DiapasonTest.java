@@ -18,14 +18,14 @@ public class DiapasonTest {
 
     @Test
     public void whenSquareFunctionShouldSquareResults() {
-        List<Double> result = Diapason.diapason(5, 8, x -> x * x );
+        List<Double> result = Diapason.diapason(5, 8, x -> x * x);
         List<Double> expected = Arrays.asList(25D, 36D, 49D);
         assertThat(result, is(expected));
     }
 
     @Test
     public void whenExpFunctionShouldExpResults() {
-        List<Double> result = Diapason.diapason(5, 8, x -> Math.pow(2, x) );
+        List<Double> result = Diapason.diapason(5, 8, x -> Math.pow(2, x));
         List<Double> expected = Arrays.asList(32D, 64D, 128D);
         assertThat(result, is(expected));
     }

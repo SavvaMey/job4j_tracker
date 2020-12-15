@@ -1,9 +1,6 @@
-package ru.job4j.StreamApi;
+package ru.job4j.streamapi;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class StreamUsage {
     public static class Task {
@@ -17,10 +14,10 @@ public class StreamUsage {
 
         @Override
         public String toString() {
-            return "Task{" +
-                    "name='" + name + '\'' +
-                    ", spent=" + spent +
-                    '}';
+            return "Task{"
+                    + "name='" + name + '\''
+                    + ", spent=" + spent
+                    + '}';
         }
     }
 

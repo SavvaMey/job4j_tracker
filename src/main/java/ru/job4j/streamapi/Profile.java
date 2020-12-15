@@ -1,8 +1,6 @@
-package ru.job4j.StreamApi;
+package ru.job4j.streamapi;
 
-import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class Profile {
     private Address address;
@@ -15,11 +13,14 @@ public class Profile {
         return address;
     }
 
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Profile)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Profile)) {
+            return false;
+        }
         Profile profile = (Profile) o;
         return getAddress().equals(profile.getAddress());
     }

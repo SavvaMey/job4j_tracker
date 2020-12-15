@@ -12,7 +12,7 @@ public class SearchAtt {
     public static List<Attachment> filter(List<Attachment> list, Predicate<Attachment> predicate) {
         List<Attachment> rsl = new ArrayList<>();
         for (Attachment attachment : list) {
-                if (predicate.test(attachment)){
+                if (predicate.test(attachment)) {
                     rsl.add(attachment);
                 }
         }
@@ -21,12 +21,12 @@ public class SearchAtt {
 
     public static List<Attachment> filterSize(List<Attachment> list, int to) {
         Predicate<Attachment> predicate = x -> x.getSize() > to;
-        return filter(list,predicate);
+        return filter(list, predicate);
     }
 
     public static List<Attachment> filterName(List<Attachment> list, String string) {
         Predicate<Attachment> predicate = x -> x.getName().contains(string);
-        return filter(list,predicate);
+        return filter(list, predicate);
     }
 
     public static void main(String[] args) {
