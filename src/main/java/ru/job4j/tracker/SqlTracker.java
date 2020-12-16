@@ -126,14 +126,13 @@ public class SqlTracker implements Store {
         try (PreparedStatement statement = cn.prepareStatement(
                 "SELECT * FROM items WHERE id=?")) {
             statement.setInt(1, Integer.parseInt(id));
-            try(ResultSet resultSet = statement.executeQuery()) {
+            try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     item.setId(resultSet.getInt(1));
                     item.setName(resultSet.getString(2));
                     return item;
                 }
-            };
-
+            }
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
