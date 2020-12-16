@@ -87,10 +87,10 @@ public class SqlTrackerTest {
     public void findByIdItem() throws SQLException {
         try (SqlTracker tracker = new SqlTracker(
                 ConnectionRollback.create(SqlTrackerTest.init()))) {
-            tracker.add(new Item("rere"));
-            tracker.add(new Item("name"));
-            assertThat(tracker.findById(2 + "").getName(),
-                    is("name"));
+            Item item = new Item("test");
+            tracker.add(item);
+            assertThat(item.getName(),
+                    is(tracker.findById(String.valueOf(item.getId())).getName()));
         } catch (Exception e) {
             e.printStackTrace();
         }
