@@ -1,0 +1,9 @@
+c помощью jconsole и jmap просмотрено поведение G1 коллектора c базовыми настройками:
+https://prnt.sc/x2iy0n - jconsole
+https://prnt.sc/x2j2ku - jmap
+
+при данных аргументах VM удалось уронить программу: -XX:+UseSerialGC -Xmx8m -Xms8m
+Exception in thread "Logging-Cleaner" java.lang.OutOfMemoryError: Java heap space
+https://prnt.sc/x2jheo - jconsole
+https://prnt.sc/x2jmf8 - jmap
+
