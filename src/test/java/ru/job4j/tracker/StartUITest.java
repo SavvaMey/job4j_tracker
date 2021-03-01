@@ -9,6 +9,9 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class StartUITest {
 
@@ -16,7 +19,7 @@ public class StartUITest {
     public void whenCreateItem() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0", "Item name", "1"}
+                new String[]{"0", "Item name", "1"}
         );
         MemTracker tracker = new MemTracker();
         List<UserAction> actions = new ArrayList<>();
@@ -30,7 +33,7 @@ public class StartUITest {
     public void whenDeleteItem() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0", "Item name", "1", "1", "2" }
+                new String[]{"0", "Item name", "1", "1", "2"}
         );
         MemTracker tracker = new MemTracker();
         List<UserAction> actions = new ArrayList<>();
@@ -46,7 +49,7 @@ public class StartUITest {
     public void whenReplaceItem() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0", "Item name", "1", "1", "New name", "2" }
+                new String[]{"0", "Item name", "1", "1", "New name", "2"}
         );
         MemTracker tracker = new MemTracker();
         List<UserAction> actions = new ArrayList<>();
@@ -108,7 +111,7 @@ public class StartUITest {
     public void whenFindByNameAction() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[]{"0", "name", "1", "name", "2" }
+                new String[]{"0", "name", "1", "name", "2"}
         );
         MemTracker tracker = new MemTracker();
         List<UserAction> actions = new ArrayList<>();
@@ -171,7 +174,7 @@ public class StartUITest {
     public void whenValidInput() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"one", "1"}
+                new String[]{"one", "1"}
         );
         MemTracker tracker = new MemTracker();
         List<UserAction> actions = new ArrayList<>();
@@ -187,7 +190,7 @@ public class StartUITest {
     public void whenInvalidInput() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"one", "1"});
+                new String[]{"one", "1"});
         List<UserAction> actions = new ArrayList<>();
         actions.add(new CreateAction(out));
         actions.add(new FindByIdAction(out));
@@ -195,5 +198,134 @@ public class StartUITest {
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
         assertThat(out.toString(), is("Please enter validate data again.\r\n"));
+    }
+
+    @Test
+    public void whenReplaceActThenSuccess() {
+        Output out = new StubOutput();
+        Store tracker = new MemTracker();
+        tracker.add(new Item("Replaced item"));
+        String replacedName = "New item name";
+        ReplaceAction rep = new ReplaceAction(out);
+        Input input = mock(Input.class);
+        when(input.askInt(any(String.class))).thenReturn(1);
+        when(input.askStr(any(String.class))).thenReturn(replacedName);
+        rep.execute(input, tracker);
+        String ln = System.lineSeparator();
+        assertThat(
+                out.toString(),
+                is("=== Replace Item ====" + ln + "имя заявки изменено" + ln)
+        );
+        assertThat(tracker.findAll().get(0).getName(), is(replacedName));
+    }
+
+    @Test
+    public void whenReplaceActThenFail() {
+        Output out = new StubOutput();
+        Store tracker = new MemTracker();
+        tracker.add(new Item("Replaced item"));
+        ReplaceAction rep = new ReplaceAction(out);
+        Input input = mock(Input.class);
+        rep.execute(input, tracker);
+        assertThat(tracker.findAll().get(0).getName(), is("Replaced item"));
+    }
+
+    @Test
+    public void whenDeleteActThenSuccess() {
+        Output out = new StubOutput();
+        Store tracker = new MemTracker();
+        tracker.add(new Item("Add item"));
+        DeleteAction rep = new DeleteAction(out);
+        Input input = mock(Input.class);
+        when(input.askInt(any(String.class))).thenReturn(1);
+        rep.execute(input, tracker);
+        String ln = System.lineSeparator();
+        assertThat(
+                out.toString(),
+                is("=== Delete Item ====" + ln + "имя заявки удалено" + ln)
+        );
+        assertThat(tracker.findAll().size(), is(0));
+    }
+
+    @Test
+    public void whenDeleteActThenFail() {
+        Output out = new StubOutput();
+        Store tracker = new MemTracker();
+        tracker.add(new Item("Add item"));
+        DeleteAction rep = new DeleteAction(out);
+        Input input = mock(Input.class);
+        rep.execute(input, tracker);
+        assertThat(tracker.findAll().get(0).getName(), is("Add item"));
+    }
+
+    @Test
+    public void whenFindByIdActionThenSuccess() {
+        Output out = new StubOutput();
+        Store tracker = new MemTracker();
+        tracker.add(new Item("Add item"));
+        FindByIdAction rep = new FindByIdAction(out);
+        Input input = mock(Input.class);
+        when(input.askInt(any(String.class))).thenReturn(1);
+        rep.execute(input, tracker);
+        String ln = System.lineSeparator();
+        assertThat(
+                out.toString(),
+                is("=== Find by id ====" + ln
+                        + "id: 1 name: Add item" + ln)
+        );
+        assertThat(tracker.findById(1).getName(), is("Add item"));
+    }
+
+    @Test
+    public void whenFindByIdActionThenFail() {
+        Output out = new StubOutput();
+        Store tracker = new MemTracker();
+        tracker.add(new Item("Add item"));
+        FindByIdAction rep = new FindByIdAction(out);
+        Input input = mock(Input.class);
+        rep.execute(input, tracker);
+        String ln = System.lineSeparator();
+        assertThat(
+                out.toString(),
+                is("=== Find by id ====" + ln
+                        + "Заявка с таким id не найдена" + ln)
+        );
+    }
+
+    @Test
+    public void whenFindByNameActionThenSuccess() {
+        Output out = new StubOutput();
+        Store tracker = new MemTracker();
+        tracker.add(new Item("Add item"));
+        tracker.add(new Item("Add item"));
+        FindByNameAction rep = new FindByNameAction(out);
+        Input input = mock(Input.class);
+        when(input.askStr(any(String.class))).thenReturn("Add item");
+        rep.execute(input, tracker);
+        String ln = System.lineSeparator();
+        assertThat(
+                out.toString(),
+                is("=== Find by name ====" + ln
+                        + "id: 1 name: Add item" + ln
+                        + "id: 2 name: Add item" + ln)
+        );
+        assertThat(tracker.findByName("Add item").size(), is(2));
+    }
+
+    @Test
+    public void whenFindByNameActionThenFail() {
+        Output out = new StubOutput();
+        Store tracker = new MemTracker();
+        tracker.add(new Item("Add item"));
+        tracker.add(new Item("Add item"));
+        FindByNameAction rep = new FindByNameAction(out);
+        Input input = mock(Input.class);
+        rep.execute(input, tracker);
+        String ln = System.lineSeparator();
+        assertThat(
+                out.toString(),
+                is("=== Find by name ====" + ln
+                        + "Заявки с таким именем не найдены" +ln)
+        );
     }
 }
