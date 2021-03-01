@@ -7,13 +7,13 @@ import static org.junit.Assert.assertThat;
 
 public class TrackerSingleTest {
 
-    @Test
-    public void getTestInstance() {
-        TrackerSingle[] arr = new TrackerSingle[100];
-        int count = 1;
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = TrackerSingle.getInstance();
-        }
-        assertThat(TrackerSingle.getCounter(), is(1));
-    }
+//    @Test
+//    public void getTestInstance() {
+//        TrackerSingle[] arr = new TrackerSingle[100];
+//        int count = 1;
+//        for (int i = 0; i < arr.length; i++) {
+//            arr[i] = TrackerSingle.getInstance();
+//        }
+//        assertThat(TrackerSingle.getCounter(), is(1));
+//    }
 }

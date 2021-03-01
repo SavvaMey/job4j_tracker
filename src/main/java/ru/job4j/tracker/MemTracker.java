@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MemTracker {
+public class MemTracker implements Store {
     private final List<Item> items = new ArrayList<>(100);
     private int ids = 1; // теперь используется только для генерации id
+
+    @Override
+    public void init() {
+    }
 
     public Item add(Item item) {
         item.setId(ids++);
@@ -63,5 +67,10 @@ public class MemTracker {
             items.remove(index);
         }
         return rsl;
+    }
+
+    @Override
+    public void close() throws Exception {
+
     }
 }

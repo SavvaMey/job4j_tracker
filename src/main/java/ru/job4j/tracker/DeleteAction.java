@@ -17,7 +17,7 @@ public class DeleteAction implements UserAction {
     public boolean execute(Input input, Store tracker) {
         out.println("=== Delete Item ====");
         int id = input.askInt("Enter the id of the removable application:");
-        if (tracker.delete(id + "")) {
+        if (tracker.delete(id)) {
             out.println("имя заявки удалено");
         } else {
             out.println("введен неккоректный id");

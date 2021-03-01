@@ -76,7 +76,7 @@ public class SqlTrackerTest {
             Item itemAn = new Item("name");
             tracker.add(item);
             tracker.add(itemAn);
-            tracker.delete(item.getId() + "");
+            tracker.delete(item.getId());
             assertThat(tracker.findAll().size(), is(1));
         } catch (Exception e) {
             e.printStackTrace();
@@ -90,7 +90,7 @@ public class SqlTrackerTest {
             Item item = new Item("test");
             tracker.add(item);
             assertThat(item.getName(),
-                    is(tracker.findById(String.valueOf(item.getId())).getName()));
+                    is(tracker.findById(item.getId()).getName()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -105,7 +105,7 @@ public class SqlTrackerTest {
             tracker.add(item);
             tracker.add(itemAn);
             Item itemAnReplace = new Item("ok");
-            tracker.replace(itemAn.getId() + "", itemAnReplace);
+            tracker.replace(itemAn.getId(), itemAnReplace);
             assertThat(tracker.findByName("ok").size(), is(1));
         } catch (Exception e) {
             e.printStackTrace();
