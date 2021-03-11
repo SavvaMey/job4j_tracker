@@ -325,7 +325,7 @@ public class StartUITest {
         assertThat(
                 out.toString(),
                 is("=== Find by name ====" + ln
-                        + "Заявки с таким именем не найдены" +ln)
+                        + "Заявки с таким именем не найдены" + ln)
         );
     }
 }
