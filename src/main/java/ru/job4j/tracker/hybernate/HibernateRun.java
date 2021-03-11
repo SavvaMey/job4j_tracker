@@ -7,6 +7,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import ru.job4j.tracker.Item;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public class HibernateRun {
@@ -15,7 +16,8 @@ public class HibernateRun {
                 .configure().build();
         try {
             SessionFactory sf = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-            Item item = create(new Item("Learn Hibernate"), sf);
+            Item item = create(new Item("Learn Hibernate", "text",
+                    new Timestamp(1459510232000L)), sf);
             System.out.println(item);
             item.setName("Learn Hibernate 5.");
             update(item, sf);
@@ -23,6 +25,8 @@ public class HibernateRun {
             Item rsl = findById(item.getId(), sf);
             System.out.println(rsl);
             delete(rsl.getId(), sf);
+            create(new Item("Learn Hibernate", "text", new Timestamp(1459510235000L)), sf);
+            create(new Item("Learn Hibernate2", "text", new Timestamp(1459550235000L)), sf);
             List<Item> list = findAll(sf);
             for (Item it : list) {
                 System.out.println(it);
