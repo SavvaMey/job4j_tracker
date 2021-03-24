@@ -35,9 +35,10 @@ public class HbmTracker implements Store, AutoCloseable {
         boolean result = true;
         try (Session session = sf.openSession()) {
             Transaction transaction = session.beginTransaction();
-            item.setId(id);
-            if (session.get(Item.class, id) != null) {
-                session.update(item);
+            Item itemNew = session.get(Item.class, id);
+            if (itemNew != null) {
+                itemNew.setName(item.getName());
+                session.update(itemNew);
             } else {
                 result = false;
             }
@@ -51,14 +52,14 @@ public class HbmTracker implements Store, AutoCloseable {
         boolean result = false;
         try (Session session = sf.openSession()) {
             Transaction transaction = session.beginTransaction();
-            Item item = new Item(id);
-            if (session.get(Item.class, id) != null) {
+            Item item = session.get(Item.class, id);
+            if (item != null) {
                 session.delete(item);
                 result = true;
+                transaction.commit();
             }
-            transaction.commit();
+            return result;
         }
-        return result;
     }
 
     @Override
@@ -101,4 +102,6 @@ public class HbmTracker implements Store, AutoCloseable {
     public void close() throws Exception {
         StandardServiceRegistryBuilder.destroy(registry);
     }
+
+
 }
