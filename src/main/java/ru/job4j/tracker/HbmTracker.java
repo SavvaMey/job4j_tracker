@@ -67,7 +67,7 @@ public class HbmTracker implements Store, AutoCloseable {
         List<Item> result;
         try (Session session = sf.openSession()) {
             Transaction transaction = session.beginTransaction();
-            result = session.createQuery("from Item").list();
+            result = session.createQuery("from Item", Item.class).list();
             transaction.commit();
         }
         return result;
@@ -78,10 +78,11 @@ public class HbmTracker implements Store, AutoCloseable {
         List<Item> list;
         try (Session session = sf.openSession()) {
             Transaction transaction = session.beginTransaction();
-            Query query = session.createQuery(
-                    "from Item where name = : paramName");
-            query.setParameter("paramName", key);
-            list = query.list();
+            list = session.createQuery(
+                    "from Item where name = : paramName",
+                    Item.class)
+                    .setParameter("paramName", key)
+                    .list();
             transaction.commit();
         }
         return list;
@@ -102,6 +103,5 @@ public class HbmTracker implements Store, AutoCloseable {
     public void close() throws Exception {
         StandardServiceRegistryBuilder.destroy(registry);
     }
-
 
 }

@@ -42,7 +42,6 @@ public class HbmTrackerTest {
         assertEquals(List.of(itemOne, itemTwo), hbmTracker.findAll());
     }
 
-
     @Test
     public void whenFindByName() {
         HbmTracker hbmTracker = new HbmTracker();
